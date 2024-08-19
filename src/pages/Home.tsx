@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { IProduct } from "../models/IProduct";
-import { Products } from "./Products";
-import { Cart } from "./Cart";
 import { useAddProducts } from "../hooks/useAddProducts";
+import { Products } from "../components/Products";
+import { Cart } from "../components/Cart";
 
-export const HomePage = () => {
-  const { addProducts, addedProducts } = useAddProducts();
+export const Home = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-
-  console.log(addedProducts);
+  const { addedProducts, addProducts } = useAddProducts();
 
   useEffect(() => {
     setProducts([
@@ -31,7 +29,7 @@ export const HomePage = () => {
       <div className="products">
         <Products products={products} addProducts={addProducts}></Products>
       </div>
-      <Cart addedProducts={addedProducts} />
+      <Cart addedProducts={addedProducts}></Cart>
     </>
   );
 };

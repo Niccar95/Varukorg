@@ -27,8 +27,8 @@ body {
   margin: 0;
   display: flex;
   gap: 2em;
-  min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 h1 {
@@ -55,40 +55,58 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 .products {
   display: flex;
   border: white solid 1px;
 }
 
-.cart {
+.hideCart {
+  display: none; /* Hides the cart completely */
+}
+
+.displayCart {
+  position: absolute;
   border: solid white 2px;
   padding: 2em;
-  margin: 1em;
   width: 500px;
   height: 150px;
   overflow-y: auto;
+  top: 100px;
+  right: 0;
+
+  transition: 0.3s ease-in-out;
+  display: block;
 }
 
 ul {
   display: flex;
-  flex-direction: column;
-  gap: 1em;
+  gap: 2em;
 }
 
 li {
   padding-left: 0;
   list-style: none;
+}
+
+header {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  padding: 1em;
+  justify-content: space-between;
+  align-items: center;
+  border: solid white 1px;
+  position: relative;
+}
+
+.iconContainer {
+  width: 30px;
+  cursor: pointer;
+}
+
+.cartProducts {
+  display: flex;
+  flex-direction: column;
 }

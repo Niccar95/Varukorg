@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 import { IProduct } from "../models/IProduct";
 
 interface IAddedProductProps {
@@ -5,11 +7,16 @@ interface IAddedProductProps {
 }
 
 export const Cart = ({ addedProducts }: IAddedProductProps) => {
+  const toggle = useContext(CartContext);
+
+  console.log("Cart Visibility:", toggle); // Log visibility state
+  console.log("Added Products:", addedProducts);
+
   return (
     <>
-      <div className="cart">
+      <div className={toggle ? "displayCart" : "hideCart"}>
         <h3>Varukorg</h3>
-        <ul>
+        <ul className="cartProducts">
           {addedProducts.length > 0 &&
             addedProducts.map((product) => (
               <li key={product.id}>
