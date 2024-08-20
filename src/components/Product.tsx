@@ -1,22 +1,17 @@
-import { IProduct } from "../models/IProduct";
+import { IProduct } from "../models/Product";
 
 interface IProductProps {
   product: IProduct;
-  addProducts: (product: IProduct) => void;
+  handleAdd: (id: number) => void;
 }
 
-export const Product = ({ product, addProducts }: IProductProps) => {
-  const addToCart = () => {
-    addProducts(product);
-    console.log(product);
-  };
-
+export const Product = ({ product, handleAdd }: IProductProps) => {
   return (
     <>
       <li>
         <h3>{product.name}</h3>
         <p>Pris: {product.price}kr</p>
-        <button onClick={addToCart}>Köp nu!</button>
+        <button onClick={() => handleAdd(product.id)}>Köp nu!</button>
       </li>
     </>
   );

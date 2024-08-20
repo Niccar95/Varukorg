@@ -6,12 +6,6 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
 }
 
 a {
@@ -61,7 +55,7 @@ button:focus-visible {
 }
 
 .hideCart {
-  display: none; /* Hides the cart completely */
+  display: none;
 }
 
 .displayCart {
@@ -69,13 +63,13 @@ button:focus-visible {
   border: solid white 2px;
   padding: 2em;
   width: 500px;
-  height: 150px;
+  height: 200px;
   overflow-y: auto;
   top: 100px;
   right: 0;
-
-  transition: 0.3s ease-in-out;
   display: block;
+  background-color: whitesmoke;
+  color: black;
 }
 
 ul {

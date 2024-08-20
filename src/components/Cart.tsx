@@ -1,26 +1,27 @@
 import { useContext } from "react";
 import { CartContext } from "../contexts/CartContext";
-import { IProduct } from "../models/IProduct";
+import { IProduct } from "../models/Product";
 
-interface IAddedProductProps {
-  addedProducts: IProduct[];
+interface ICartItemsProps {
+  cartItems: IProduct[];
 }
 
-export const Cart = ({ addedProducts }: IAddedProductProps) => {
+export const Cart = ({ cartItems }: ICartItemsProps) => {
   const toggle = useContext(CartContext);
 
-  console.log("Cart Visibility:", toggle); // Log visibility state
-  console.log("Added Products:", addedProducts);
+  console.log("Cart Visibility:", toggle);
+  console.log("Added Products:");
 
   return (
     <>
       <div className={toggle ? "displayCart" : "hideCart"}>
         <h3>Varukorg</h3>
         <ul className="cartProducts">
-          {addedProducts.length > 0 &&
-            addedProducts.map((product) => (
+          {cartItems.length > 0 &&
+            cartItems.map((product) => (
               <li key={product.id}>
                 Produkt: {product.name} - Mängd: {product.quantity} st
+                <button>remove</button>
               </li>
             ))}
         </ul>

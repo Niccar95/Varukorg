@@ -1,12 +1,12 @@
-import { IProduct } from "../models/IProduct";
+import { IProduct } from "../models/Product";
 import { Product } from "./Product";
 
 interface IProductsProps {
   products: IProduct[];
-  addProducts: (product: IProduct) => void;
+  handleAdd: (id: number) => void;
 }
 
-export const Products = ({ products, addProducts }: IProductsProps) => {
+export const Products = ({ products, handleAdd }: IProductsProps) => {
   return (
     <>
       {products.length > 0 &&
@@ -15,7 +15,7 @@ export const Products = ({ products, addProducts }: IProductsProps) => {
             <Product
               product={product}
               key={product.id}
-              addProducts={addProducts}
+              handleAdd={handleAdd}
             ></Product>
           );
         })}

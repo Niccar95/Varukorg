@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { IProduct } from "../models/IProduct";
+import { Product } from "../models/Product";
 
 export const useAddProducts = () => {
-  const [addedProducts, setAddedProducts] = useState<IProduct[]>([]);
+  const [addedProducts, setAddedProducts] = useState<Product[]>([]);
 
-  const addProducts = (product: IProduct) => {
+  const addProducts = (product: Product) => {
     const updatedProducts = addedProducts.map((p) =>
       p.id === product.id ? { ...p, quantity: (p.quantity || 1) + 1 } : p
     );

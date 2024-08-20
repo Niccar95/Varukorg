@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { IProduct } from "../models/IProduct";
-import { useAddProducts } from "../hooks/useAddProducts";
+import { useState, useReducer, useEffect } from "react";
 import { Products } from "../components/Products";
 import { Cart } from "../components/Cart";
+import { ActionType, ProductReducer } from "../reducers/ProductReducer";
+import { IProduct } from "../models/Product";
 
 export const Home = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
-  const { addedProducts, addProducts } = useAddProducts();
 
   useEffect(() => {
     setProducts([
@@ -19,6 +18,18 @@ export const Home = () => {
     ]);
   }, []);
 
+  const [cart, dispatch] = useReducer(ProductReducer, []);
+
+  const handleAdd = (id: number) => {
+    const productToAdd = products.find((product) => product.id === id);
+    if (productToAdd) {
+      dispatch({
+        type: ActionType.ADDED,
+        payload: productToAdd,
+      });
+    }
+  };
+
   return (
     <>
       <h1>
@@ -27,9 +38,9 @@ export const Home = () => {
         &#127822;
       </h1>
       <div className="products">
-        <Products products={products} addProducts={addProducts}></Products>
+        <Products products={products} handleAdd={handleAdd}></Products>
       </div>
-      <Cart addedProducts={addedProducts}></Cart>
+      <Cart cartItems={cart}></Cart>
     </>
   );
 };
